@@ -1,18 +1,57 @@
-h1{
+.text{
 	font-family: 'Kodchasan', sans-serif;
 	text-align: center;
+	margin-bottom: 10px;
+	border-bottom: 2px solid black;
+	margin-bottom: 10px;
 }
+
+#Joker{
+	border-top: 2px solid black;
+	font-weight: lighter;
+	margin-bottom: 20px;
+}
+
+#Joker:hover ~ .robots .left_eye{
+	animation: left_position 2.4s infinite;
+}
+#Joker:hover ~ .robots .right_eye{
+	animation: right_position 2.4s infinite;
+}
+
+#Joker:hover ~ .robots .left_arm{ 
+	 animation: leftwave 0.3s infinite alternate;
+} 
+#Joker:hover ~ .robots .right_arm{ 
+	 animation: rightwave .3s infinite alternate;
+} 
+#Joker:hover ~ .robots .head{
+	animation: changewidth .6s infinite alternate;
+    /*transition: 1s ease-in-out;*/
+}
+#Joker:hover ~ .robots .upper_body{
+	animation: dance 1s infinite linear;
+}
+#Joker:hover ~ .robots .right_leg{ 
+    animation: vibrate_right .1s infinite linear alternate;
+}
+#Joker:hover ~ .robots .left_leg{ 
+    animation: vibrate_left .1s infinite linear alternate;
+}
+
 
 .robots {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin: 20px;
 }
 
 .android {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin: 50px;
 }
 
 .head, .left_arm, .right_arm, .torso, .left_leg, .right_leg {
@@ -27,7 +66,7 @@ h1{
 }
 
 .head:hover {
-	animation: changewidth 1s infinite alternate;
+	animation: changewidth .6s infinite alternate;
 }
 
 @keyframes changewidth {
@@ -59,11 +98,11 @@ h1{
 }
 
 .head:hover .eyes .left_eye{
-	animation: left_position 4s infinite alternate;
+	animation: left_position 2.4s infinite;
 }
 
 .head:hover .eyes .right_eye{
-	animation: right_position 4s infinite alternate;
+	animation: right_position 2.4s infinite;
 }
 
 @keyframes left_position{
@@ -100,6 +139,25 @@ h1{
 	display: flex;
 }
 
+.upper_body:hover {
+	animation: dance 1s infinite linear;
+}
+
+@keyframes dance {
+	0%{
+		transform: rotate(0deg);
+	}
+	25%{
+		transform: rotate(20deg);
+	}
+	50%{
+		transform: rotate(-20deg);
+	}
+	100%{
+		transform: rotate(0deg);
+	}
+}
+
 .left_arm, .right_arm {
 	height: 125px;
 	width: 40px;
@@ -110,8 +168,29 @@ h1{
 	margin-right: 10px;
 }
 
+.left_arm:hover {
+	animation: leftwave 0.3s infinite alternate;
+}
+
+@keyframes leftwave{
+	to{
+		transform: rotate(100deg);
+		transform-origin: top;
+	}
+}
 .right_arm {
 	margin-left: 10px;
+}
+
+.right_arm:hover {
+	animation: rightwave .3s infinite alternate;
+}
+
+@keyframes rightwave{
+	to{
+		transform: rotate(-100deg);
+		transform-origin: top;
+	}
 }
 
 .torso {
@@ -123,14 +202,36 @@ h1{
 .lower_body {
 	display: flex;
 	justify-content: center;
+	position: relative;
+	top: -50px
 }
 
 .left_leg, .right_leg {
-	height: 70px;
+	height: 120px;
 	width: 40px;
 	border-radius: 0px 0px 25px 25px;
 }
 
 .right_leg {
 	margin-left: 30px;
+}
+
+.left_leg:hover {
+	animation: vibrate_left .1s infinite linear alternate;
+}
+
+.right_leg:hover {
+	animation: vibrate_right .1s infinite linear alternate;
+}
+
+@keyframes vibrate_left {
+	to{
+		transform: rotate(30deg);
+	}
+}
+
+@keyframes vibrate_right {
+	to{
+		transform: rotate(-30deg);
+	}
 }
